@@ -47,6 +47,8 @@ on critical areas for catheter positioning using Anatomical and Intensity Based 
 ResNeXt50 :
 ResNet (Residual Networks) is a deep convolutional neural network architecture known for its use of residual connections, which help gradients flow through deep networks, enabling efficient training of very deep models. ResNeXt builds on ResNet by introducing the concept of cardinality, which refers to the number of parallel transformations within a layer, improving performance without significantly increasing model complexity.
 
+![Model Architecture Diagram](https://github.com/priyadharshini18-hub/Catheter-Positioning-using-ResNet/blob/main/images/Figure1_Model_Architecture.png)
+
 For this project, we are using ResNeXt50_32x4d, a specific variant of ResNeXt. This model has 50 layers and uses a cardinality of 32 with a width factor of 4, meaning it applies 32 parallel transformations per layer, each with a width of 4, allowing it to learn more complex features while maintaining computational efficiency. The model also consists of a custom head - a Dropout layer (0.3) for regularization, a linear layer mapping to 11 output classes and No activation function in the final layer (used with BCEWithLogitsLoss).
 
 ## Training approach:
@@ -72,9 +74,13 @@ Without masking - Initial Loss: Started at ~0.33 (training) and ~0.24 (validatio
 AUC Score: Peaked at ~0.91
 Accuracy: Reached maximum of 92% for both training and validation.
 
+![ResNet50 Without Masking](https://github.com/priyadharshini18-hub/Catheter-Positioning-using-ResNet/blob/main/images/Figure2_ResNet50_Without_Masking.png)
+
 With Masking - Initial Loss: Started at ~0.27 (training) and ~0.24 (validation) Final Convergence: Achieved lower final loss of ~0.17
 AUC Score: Improved performance with peak of ~0.93
 Accuracy: Achieved superior accuracy of 93%
+
+![ResNet50 With Masking](https://github.com/priyadharshini18-hub/Catheter-Positioning-using-ResNet/blob/main/images/Figure3_ResNet50_With_Masking.png)
 
 ## Conclusion & Future Scope
 In this project, we employed the ResNeXt50_32x4d model, fine-tuned on a chest X-ray dataset, to effectively classify catheter and tube positions using a combination of data augmentation and masking techniques. The results suggest that this approach, leveraging transfer learning significantly improved performance while reducing training time. Future work could focus on optimizing the model further through hyperparameter tuning, longer training periods, and testing different learning rate schedules. Additionally, expanding the model to handle other types of medical devices or applying it to other areas of medical imaging could enhance its practical applications in clinical settings, supporting more efficient and accurate diagnostic workflows.
